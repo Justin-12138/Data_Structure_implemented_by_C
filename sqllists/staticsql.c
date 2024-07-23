@@ -33,8 +33,8 @@ void insert_index(sql*s,int index,ElemType elem)
 		printf("index is illegal!\n");
 		return ;
 	}
-	for(int i=s->length-1;i>index-1;i--){
-		s->data[i+1]=s->data[i];
+	for(int i=s->length;i>index-1;i--){
+		s->data[i]=s->data[i-1];
 	}
 	s->data[index-1]=elem;
 	s->length++;
