@@ -31,7 +31,7 @@ void extension(dyarr*d){
 }
 
 void insert_end(dyarr*d,ElemType elem){
-	if(d->length>=d->capacity){
+	if(d->length>d->capacity){
 		extension(d);
 	}
 	d->data[d->length]=elem;
@@ -39,6 +39,9 @@ void insert_end(dyarr*d,ElemType elem){
 }
 
 void insert_head(dyarr*d,ElemType elem){
+	if(d->length>d->capacity){
+		extension(d);
+	}
 	for(int i=d->length;i>0;i--){
 		d->data[i]=d->data[i-1];
 	}
@@ -106,10 +109,6 @@ void change_byvalue(dyarr*d,ElemType target,ElemType source){
 	change_byindex(d,index,target);
 
 }
-
-
-
-
 
 
 void ptf(dyarr*d){
