@@ -1,8 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
-
 int main(){
     int arr[3]={1,2,3};
     printf("arr's addr:%p\n",&arr);
@@ -12,9 +10,11 @@ int main(){
         printf("arr's elem [%d] addr:%p\n",i+1,&arr[i]);   
     }
     printf("------------------------------------------------\n");
-
+    
+    // allocate memory
     int *data=(int *)malloc(sizeof(int)*3);
     printf("ptr's addr:%p\n",data);
+    
     for (int i = 0; i < 3; i++)
     {
         data[i]=i*2;
@@ -30,8 +30,7 @@ int main(){
     {
         printf("ptr's elem [%d] addr:%p\n",i+1,&data[i]);   
     }
-
-
+    // free data
     free(data);
     data = NULL;
     return 0;

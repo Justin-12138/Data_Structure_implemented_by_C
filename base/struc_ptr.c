@@ -9,30 +9,15 @@ typedef struct
 
 }point;
 
-
-// point* init_point(int x,int y){
-//     point* newpoint=(point*)malloc(sizeof(point));
-//     if (newpoint==NULL)
-//     {
-//         printf("Memory allocate failed!");
-//         return;
-//     }
-//     newpoint->x=x;
-//     newpoint->y=y;
-//     return newpoint;
-// }
-
 void init_point(point *p,int x,int y){
-    
-
     p->x=x;
     p->y=y;
 }
 
-void calc_d(point p){
-    
+double calc_d(point *p1,point *p2){
 
-
+    float dis = ((p1->x-p2->x)^2+(p1->y-p2->y)^2)^(1/2);
+    return dis;
 }
 
 
@@ -50,7 +35,13 @@ void ptf(point *p){
 int main()
 {
     point p1;
+    point p2;
+    init_point(&p2,0,0);
     init_point(&p1,3,4);
+    double dis = calc_d(&p1,&p2);
+    printf("dis between p1 and p2:%2f",dis);
+    
     ptf(&p1);
+    
     return 0;
 }

@@ -1,5 +1,6 @@
 #include<stdio.h>
 #define maxsize 100
+
 typedef int ElemType;
 typedef struct
 {
@@ -131,9 +132,9 @@ int main(){
 	del_by_value(&s1,3);	
 
 	insert_end(&s1,4);
-        insert_end(&s1,5);
-        insert_end(&s1,6);
-        insert_end(&s1,7);
+    insert_end(&s1,5);
+    insert_end(&s1,6);
+    insert_end(&s1,7);
 	change_by_index(&s1,3,10086);	
 	insert_index(&s1,2,10010);
 	
