@@ -1,41 +1,41 @@
 #include<stdio.h>
+#include<stdlib.h>
+
+
 
 
 int main(){
-	int arry[5]={2,3,4,1,77};
-
-	//find max,min
-	int data_max=arry[0];
-	int data_min=arry[0];
-	for (int i = 1; i < 5; i++)
+	int arr[]={4,23,2,10};
+	int length = (sizeof(arr)/sizeof(arr[0]));
+	printf("%d\n",length);
+	printf("%ld\n",sizeof(arr));
+	// buble rank
+	for (int j = 0; j < length-1; j++)
 	{
-		if (arry[i]>=data_max)
+		for (int i = 0; i < length-1; i++)
+	{
+		if (arr[i]>arr[i+1])
 		{
-			data_max=arry[i];
+			int swap;
+			swap=arr[i];
+			arr[i]=arr[i+1];
+			arr[i+1]=swap;
 		}
 	}
-	printf("maxnum:%d\n",data_max);
-	
-	for (int i = 1; i < 5; i++)
-	{
-		if (arry[i]<=data_min)
-		{
-			data_min=arry[i];
-		}
 	}
-	printf("maxnum:%d\n",data_min);
+	
 
-	//swap
-	int temp;
-	temp=arry[2];
-	arry[2]=arry[3];
-	arry[3]=temp;
-	int j=0;
-	while (j<5)
+
+	for (int i = 0; i < length; i++)
 	{
-		printf("elem of arry:%d\n",arry[j]);
-		j++;
+		printf("elem:%d\n",arr[i]);
 	}
 	
+	
+
+
+
+
+
 	return 0;
 }

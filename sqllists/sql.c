@@ -82,8 +82,8 @@ void indexdel(sql*s,int index){
 if(s->length<=0){
 return;
 }
-for(int i = index-1;i<s->length;i++){
-s->data[i]=s->data[i+1];
+for(int i = index;i<s->length;i++){
+s->data[i-1]=s->data[i];
 }
 s->length--;
 }
