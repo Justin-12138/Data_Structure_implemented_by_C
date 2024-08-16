@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdbool.h>
 #define maxsize 100
 
 typedef struct {
@@ -103,6 +104,35 @@ for(int i =0;i<s->length;i++){
 printf("elem[%d] of sql:%d\n",i+1,s->data[i]);}
 }
 
+void bubblerank(sql *s,bool ascend){
+int n = s->length;
+
+for(int i=0;i<n-1;i++)
+{
+	int swap;
+	for(int j=0;j<n-1;j++){
+
+		if(ascend){
+			if(s->data[j]>s->data[j+1])
+			{
+			swap=s->data[j];
+			s->data[j]=s->data[j+1];
+			s->data[j+1]=swap;}
+			}
+
+		else{
+			if(s->data[j]<s->data[j+1])
+			{
+			swap=s->data[j];
+			s->data[j]=s->data[j+1];
+			s->data[j+1]=swap;}
+			}
+		}
+}
+ptf(s);
+}
+
+
 
 int main(){
 sql s1;
@@ -112,8 +142,9 @@ tailinsert(&s1,2);
 headinsert(&s1,0);
 insert(&s1,2,22);
 changev(&s1,222,22);
+printf("----------------bubble rank ascend Ture------------------------\n");
+bubblerank(&s1,true);
 
-ptf(&s1);
 
 int index = searchv(&s1,222);
 printf("search by value(222) get index:%d\n",index);
@@ -121,7 +152,8 @@ printf("search by index(4) get value:%d\n",searchi(&s1,4));
 
 printf("---------------------del 222-----------------------\n");
 valuedel(&s1,222);
-ptf(&s1);
+printf("----------------bubble rank ascend false------------------------\n");
+bubblerank(&s1,false);
 
 printf("-------------------del index1-----------------------\n");
 indexdel(&s1,1);
