@@ -23,7 +23,6 @@ void bubblerank(int arr[],int n,bool ascend){
 			{
 				if (arr[j]<arr[j+1])
 				{
-
 					swap=arr[j];
 					arr[j]=arr[j+1];
 					arr[j+1]=swap;		
@@ -37,50 +36,20 @@ void bubblerank(int arr[],int n,bool ascend){
 	}
 }
 
-void insertrank(int arr,int n,bool ascend){
-	//[5,4,3,2,1]
-	/*
-	5,4
-	
-	*/
 
-
-}
 
 int main(){
-	int arr[]={4,23,2,10};
+	int arr[]={4,3,2,1};
 	int n = (sizeof(arr)/sizeof(arr[0]));
-	printf("%d\n",n);
-	printf("%ld\n",sizeof(arr));
-	bubblerank(arr,n,true);
-	printf("\n");
-	bubblerank(arr,n,false);
-	//[5,4,3,2,1]
-	for (int i = 1; i < n; i++)
-	{
-		int temp=arr[i];
-		if (arr[i>temp])
-		{
-			
-		}
-		
+	int i,j,key;
+	
 
-		for (int j = 0; i < n; j++)
-		{
-			/* code */
-		}
-		
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d\n",arr[i]);
 	}
 	
 	
-
-	
-	
-	
-
-
-
-
 
 	return 0;
 }
