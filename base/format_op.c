@@ -8,7 +8,7 @@ int main() {
     float e = 123.456f;
     double f = 123.456;
     long double g = 123.456L;
-    char h = 'A';
+    char h = 's';
     char *i = "Hello, World!";
     void *p = &a;
 
