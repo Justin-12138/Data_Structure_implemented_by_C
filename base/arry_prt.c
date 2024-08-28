@@ -1,9 +1,39 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+void  merge(int *arr1,int size1,int *arr2,int size2){
+    int size3=size1+size2;
+    int *arr3=(int*)malloc(sizeof(int)*size3);
+    for (int i = 0; i < size3; i++)
+    {
+        if (i<size1)
+        {
+            arr3[i]=arr1[i];
+        }
+        else{
+            arr3[i]=arr2[i-size1];
+        }
+    }
+    for (int i = 0; i < size3; i++)
+    {
+        printf("elem[%d]:%d\n",i+1,arr3[i]);
+    }
+}
+
+
 
 
 int main(){
+    int arr1[]={11,2,3};
+    int arr2[]={44,6,11,2};
+    int size1=sizeof(arr1)/sizeof(arr1[0]);
+    int size2=sizeof(arr2)/sizeof(arr2[0]);
+    merge(arr1,size1,arr2,size2);
+
+
+
+    // 不能：int arr3[size3]={};
+    // 可以：int arr3[size2];
     int arr[3]={1,2,3};
     printf("arr's addr:%p\n",&arr);
 
@@ -31,9 +61,10 @@ int main(){
         printf("ptr's elem [%d] addr:%p\n",i+1,&data[i]);   
     }
 
-
     free(data);
     data = NULL;
+
+
     return 0;
 }
 

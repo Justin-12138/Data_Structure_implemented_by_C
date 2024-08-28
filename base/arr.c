@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-// #include<string.h>
+#include<string.h>
 
 #define maxsize 100
 typedef struct string
@@ -48,8 +48,6 @@ int main(){
 // {
 //     printf("str1[%d]:%c\n",i+1,str1[i]);
 // }
-
-
 
 
 
