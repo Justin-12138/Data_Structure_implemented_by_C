@@ -4,17 +4,39 @@
 #include<string.h>
 
 int main(){
+    char ch1='2';
+    // no matter how long the string,the sizeof(arr) is 8 for 64 bit OS,4 for 32 bit OS;
+    // 
+    char *str_ptr = "jjj";
+    
+    // the length of this kind definition = n+1,1 for the end signal \0; 
+    // if you define clearly char[3]="www",it won't add the \0 to the end of "www";
+    // by the way,the type of each 'w' and 'j' in "www","jjj" is char
+    char str[] = "www";
+    printf("length of str:%ld\nlength of str_ptr:%ld\n",sizeof(str_ptr),sizeof(str));
+    for (int i = 0; i < sizeof(str)-1; i++)
+    {
+        printf("%c\n",str[i]);
+    }
+    
+    for (int j = 0; j < 3; j++)
+    {
+        printf("%c\n",str_ptr[j]);
+    }
     
 
 
 
-    // int *p=&arr[3];
-    // printf("addr:%p\n",p);
-    // printf("the value of %p:%d\n",p,arr[3]);
-    // *p=3;
-    // printf("the value of %p:%d\n",p,arr[3]);
+
+
+
+
+
+    
+
+
     // char only '' %c
-    // int arr[4]={'a','b','c','2'};
+    // char arr[4]={'a','b','c','2'};
 
     // for (int i = 0; i < sizeof(arr)/sizeof(arr[0]); i++)
     // {

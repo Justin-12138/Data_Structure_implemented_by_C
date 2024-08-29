@@ -92,14 +92,19 @@ for (int i = 0; i < size-1; i++)
 
             }
         }
-        
-    }
-    
+    }   
+}
+    return arr;
 }
 
-return arr;
 
-}
+// int * opt_bublerank(int *arr,int size,bool ascend){
+
+
+
+// return arr;
+
+// }
 
 
 int main(){
