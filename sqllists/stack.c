@@ -12,6 +12,13 @@ void initstack(stack*s){
 s->top=-1;
 }
 
+void clearstack(stack*s){
+    s->top==-1;
+}
+
+
+
+
 void isempty(stack*s){
 if(s->top==-1){
 printf("the stack is empty!\n");
@@ -50,6 +57,7 @@ void ptf(stack*s){
 }
 
 
+
 int main(){
 stack s1;
 initstack(&s1);
@@ -73,5 +81,11 @@ isfull(&s1);
 
 push(&s1,10086);
 ptf(&s1);
+clearstack(&s1);
+push(&s1,10086);
+push(&s1,10086);
+push(&s1,10086);
+
+// ptf(&s1);
 
 return 0;}

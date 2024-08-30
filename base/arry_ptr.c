@@ -46,23 +46,6 @@ int *merge(int *arr1,int size1,int *arr2,int size2){
 //     return arr;
 // }
 
-// int *opt_desrank(int *arr,int size){
-//     int size_type=size%2;
-//     if (size_type==0)
-//     {
-//         for (int i = 0; i < size/2; i++)
-//         {
-//             swap(&arr[i],&arr[size-i-1]);
-//         }
-//     }
-//     else{
-//         for (int i = 0; i < (size/2)+1; i++)
-//         {
-//             swap(&arr[i],&arr[size-i-1]);
-//         }
-//     }
-//     return arr;
-// }
 
 int * opt_desrank(int *arr,int size){
     for (int i = 0; i < size/2; i++)
@@ -98,13 +81,31 @@ for (int i = 0; i < size-1; i++)
 }
 
 
-// int * opt_bublerank(int *arr,int size,bool ascend){
+
+int *dirank(int *arr,int size,bool ascend){
+    for (int i = 1; i < size; i++)
+    {
+        for (int j = i; j > 0; j--)
+        {
+            if (ascend==true)
+            {
+                if (arr[j-1]>arr[j])
+                {
+                    swap(&arr[j],&arr[j-1]);
+                }
+            }
+            else{
+                if (arr[j-1]<arr[j])
+                {
+                    swap(&arr[j],&arr[j-1]);
+                }   
+            }   
+        }
+    }
+    return arr;   
+}
 
 
-
-// return arr;
-
-// }
 
 
 int main(){
@@ -119,6 +120,9 @@ int main(){
 
     int *arr5=bublerank(arr3,7,false);
     ptf(arr5,7);
+
+    int *arr6=dirank(arr3,7,true);
+    ptf(arr6,7);
 
 
     // 不能：int arr3[size3]={};
