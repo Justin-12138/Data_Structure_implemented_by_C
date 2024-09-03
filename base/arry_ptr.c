@@ -10,6 +10,28 @@ void ptf(int *arr,int size){
     printf("-----------------------------\n");
 }
 
+int find_min_max(int *arr,int size,bool max){
+    int init=arr[0];
+    for (int i = 0; i < size; i++)
+    {
+        if (max)
+        {
+            if (arr[i]>=init)
+            {
+                init=arr[i];
+            }
+        }
+        else{
+
+            if (arr[i]<=init)
+            {
+                init=arr[i];
+            }   
+        }   
+    }
+    return init;
+}
+
 void swap(int *num1,int *num2){
 	int swap;
     swap=*num1;
@@ -106,6 +128,46 @@ int *dirank(int *arr,int size,bool ascend){
 }
 
 
+int * chrank(int *arr,int size,bool ascend){
+    for (int i = 0; i < size; i++)
+    {
+        for (int j = i+1; j < size; j++)
+        {
+            if (ascend)
+            {
+                if (arr[j]<arr[i])
+                    {
+                        swap(&arr[j],&arr[i]);
+                    }
+            }
+            else{
+                if (arr[j]>arr[i])
+                    {
+                        swap(&arr[j],&arr[i]);
+                    }
+            }
+        }
+        
+    }
+    return arr;
+
+}
+
+
+int * qrank(int * arr,int size){
+    // 6,3,5,4,99,20,4
+    //
+
+
+
+
+
+    return arr;
+}
+
+
+
+
 
 
 int main(){
@@ -124,7 +186,18 @@ int main(){
     int *arr6=dirank(arr3,7,true);
     ptf(arr6,7);
 
+    int max=find_min_max(arr6,7,true);
+    int min=find_min_max(arr6,7,false);
 
+    printf("min:%d,max:%d\n",min,max);
+
+    int*arr7=chrank(arr3,7,false);
+    ptf(arr7,7);
+
+
+    free(arr3);
+    arr3=NULL;
+    
     // 不能：int arr3[size3]={};
     // 可以：int arr3[size2];
     // int arr[3]={1,2,3};
