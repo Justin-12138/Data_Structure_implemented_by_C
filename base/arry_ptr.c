@@ -167,9 +167,6 @@ int * qrank(int * arr,int size){
 
 
 
-
-
-
 int main(){
     int arr1[]={11,2,3};
     int arr2[]={44,6,6,4};
@@ -191,13 +188,13 @@ int main(){
 
     printf("min:%d,max:%d\n",min,max);
 
-    int*arr7=chrank(arr3,7,false);
+    int*arr7=chrank(arr3,7,true);
     ptf(arr7,7);
 
 
     free(arr3);
     arr3=NULL;
-    
+
     // 不能：int arr3[size3]={};
     // 可以：int arr3[size2];
     // int arr[3]={1,2,3};
