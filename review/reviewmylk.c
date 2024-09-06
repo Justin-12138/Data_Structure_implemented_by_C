@@ -9,110 +9,106 @@ typedef struct Node
 	elemtype data;
 }Node;
 
-Node*inithead(){
+
+Node* inittial(){
 	Node*head=(Node*)malloc(sizeof(Node));
 	if (head==NULL)
 	{
 		return NULL;
 	}
-	head->next=NULL;
 	head->data=10086;
-	return head;
+	head->next=NULL;
 }
 
 int getlength(Node*head){
-	if (head->next==NULL)
+	Node*tmp=head->next;
+	if (tmp==NULL)
 	{
 		return 0;
 	}
-	Node*tmp=head->next;
 	int i=0;
 	while (tmp!=NULL)
 	{
 		tmp=tmp->next;
 		i+=1;
 	}
-	return i;	
+	return i;
 }
 
 void ptf(Node*head){
 	int length=getlength(head);
 	printf("length of lk:%d\n",length);
-	if (length==0)
+	Node*tmp=head->next;
+	if (tmp==NULL)
 	{
-		printf("lk is empty\n");
+		printf("lk is empty!\n");
 		return;
 	}
-	Node*tmp=head->next;
-	int i=1;
+	int i=0;
 	while (tmp!=NULL)
 	{
+		i+=1;
 		printf("elem[%d]:%d\n",i,tmp->data);
 		tmp=tmp->next;
-		i+=1;
 	}
-
-	printf("--------------------\n");
+	printf("----------------------\n");
 }
 
 void headinsert(Node*head,elemtype elem){
 	Node*newnode=(Node*)malloc(sizeof(Node));
-	if (newnode==NULL)
-	{
-		return;
-	}
+	newnode->data=elem;
 	newnode->next=head->next;
 	head->next=newnode;
-	newnode->data=elem;
 }
 
 void tailinsert(Node*head,elemtype elem){
 	Node*newnode=(Node*)malloc(sizeof(Node));
-	if (newnode==NULL)
+	Node*tmp=head;
+	if (tmp->next==NULL)
 	{
 		return;
 	}
+	while (tmp->next!=NULL)
+	{
+		tmp=tmp->next;	
+	}
+	newnode->next=NULL;
+	newnode->data=elem;
+	tmp->next=newnode;
+}
+
+void insert(Node*head,elemtype elem,int index){
+	int length=getlength(head);
+	if (index<0||index>length+1)
+	{
+		printf("inde out of range!");
+		return;
+	}
+	Node*newnode=(Node*)malloc(sizeof(Node));
+	int i=1;
 	Node*tmp=head->next;
-	if (tmp==NULL)
+	
+	if (index==1)
 	{
 		headinsert(head,elem);
 		return;
 	}
-	while(tmp!=NULL)
+	else if (index==length+1)
 	{
-		if (tmp->next==NULL)
-		{
-			newnode->data=elem;
-			newnode->next=NULL;
-			tmp->next=newnode;
-			break;
-		}
-		tmp=tmp->next;
-	}
-
-}
-
-void insert(Node*head,elemtype elem,int index){
-	Node*newnode=(Node*)malloc(sizeof(Node));
-	int length=getlength(head);
-	if (index==0||index>length)
-	{
+		tailinsert(head,elem);
 		return;
 	}
-	int i=1;
-	Node*tmp=head->next;
 	while (i<index-1)
 	{
 		i+=1;
-		tmp=tmp->next;		
+		tmp=tmp->next;
 	}
-	newnode->data=elem;
 	newnode->next=tmp->next;
+	newnode->data=elem;
 	tmp->next=newnode;
 }
 
 elemtype indexsearch(Node*head,int index){
-	// Node*head=(Node*)malloc(sizeof(Node));
 	Node*tmp=head->next;
 	int i=1;
 	while (i<index)
@@ -138,68 +134,79 @@ int valuesearch(Node*head,elemtype elem){
 
 void indexdelete(Node*head,int index){
 	int length=getlength(head);
-	if (index<0||index>length)
+	if (index<=0||index>length+1)
 	{
 		printf("index out of range!\n");
 		return;
 	}
-	int i=1;
-	Node*tmp=head->next;
+	else if (length<=0)
+	{
+		printf("lk is empty!\n");
+		return;
+	}
+	int i=0;
+	Node*tmp=head;
 	while (i<index-1)
 	{
-		i+=1;
 		tmp=tmp->next;
+		i+=1;
 	}
 	tmp->next=tmp->next->next;
 }
 
 void valuedelete(Node*head,elemtype elem){
-	int index = valuesearch(head,elem);
+	int index=valuesearch(head,elem);
 	indexdelete(head,index);
 }
 
-void indexchage(Node*head,int index,elemtype elem){
-	int i=1;
+void indexchange(Node*head,int index,elemtype elem){
+	int length=getlength(head);
 	Node*tmp=head->next;
+	int i=1;
 	while (i<index)
 	{
 		tmp=tmp->next;
 		i+=1;
 	}
 	tmp->data=elem;
-
 }
 
-void valuechange(Node*head,elemtype source,elemtype target){
+void valuechage(Node*head,elemtype source,elemtype target){
+	int length=getlength(head);
+	if (length<=0)
+	{
+		printf("lk is empty!\n");
+		return;
+	}
 	int index=valuesearch(head,source);
-	indexchage(head,index,target);
+	indexchange(head,index,target);
 }
 
-
-
-int main(int argc, char const *argv[])
-{
-	Node*head=inithead();
-	headinsert(head,3);
-	headinsert(head,2);
-	headinsert(head,1);
-	tailinsert(head,4);
-	tailinsert(head,56);
-	insert(head,33,3);
-	insert(head,44,4);
-	insert(head,55,5);
-	ptf(head);
-	indexdelete(head,3);
-	indexdelete(head,7);
-	valuedelete(head,4);
-	ptf(head);
-	indexchage(head,1,10086);
-	indexchage(head,2,10010);
-	valuechange(head,44,88);
+void main(){
+	Node*head=inittial();
+	headinsert(head,11);
+	headinsert(head,22);
+	tailinsert(head,33);
+	insert(head,99,2);
+	insert(head,111,1);
+	insert(head,999,5);
 	ptf(head);
 
+	indexdelete(head,5);
+	valuedelete(head,111);
+	ptf(head);
+
+	int index = valuesearch(head,22);
+	elemtype elem = indexsearch(head,1);
+	printf("elem:%d 's index is:%d\n",elem,index);
+	ptf(head);
+
+	indexchange(head,1,10086);
+	indexchange(head,2,10010);
+	valuechage(head,11,10001);
 
 
+	ptf(head);
 	free(head);
-	return 0;
+	return;
 }
