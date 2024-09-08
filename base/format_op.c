@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include<stdbool.h>
 int main() {
     int a = 123;
     unsigned int b = 123u;
@@ -11,7 +11,11 @@ int main() {
     char h = 's';
     char *i = "Hello, World!";
     void *p = &a;
+    bool ascend = false;
+    bool desascend = true;
 
+    printf("bool ascend:%d\n",ascend);
+    printf("bool ascend:%d\n",desascend);
     printf("Signed integer: %d\n", a);
     printf("Unsigned integer: %u\n", b);
     printf("Long integer: %ld\n", c);
